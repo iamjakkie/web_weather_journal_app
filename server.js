@@ -23,3 +23,17 @@ const server = app.listen(port, listening);
 function listening(){
     console.log(`running on localhost: ${port}`);
 };
+
+app.get('/all', (req, res) => {
+    res.send(projectData);
+  })
+
+  app.post('/add', (req, res) => {
+    let data = req.body;
+    let newEntry = {
+        temperature = data.temperature,
+        date = data.date,
+        user_response = data.user_response
+    }
+    projectData.push(newEntry);
+});
