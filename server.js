@@ -25,16 +25,13 @@ function listening(){
 };
 
 app.get('/all', (req, res) => {
+    console.log(projectData);
     res.send(projectData);
   })
 
 app.post('/add', (req, res) => {
     let data = req.body;
-    console.log(data);
-    // let newEntry = {
-    //     temperature = data.temp,
-    //     date = data.date,
-    //     user_response = data.feeling
-    // }
-    // projectData.push(newEntry);
+    projectData.temperature = data.temp;
+    projectData.date = data.date;
+    projectData.user_response = data.feeling;
 });
