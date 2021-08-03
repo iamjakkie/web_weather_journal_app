@@ -25,7 +25,6 @@ function listening(){
 };
 
 app.get('/all', (req, res) => {
-    console.log(projectData);
     res.send(projectData);
   })
 
@@ -33,5 +32,6 @@ app.post('/add', (req, res) => {
     let data = req.body;
     projectData.temperature = data.temp;
     projectData.date = data.date;
-    projectData.user_response = data.feeling;
+    projectData.feeling = data.feeling;
+    res.send(projectData);
 });

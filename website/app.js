@@ -21,7 +21,7 @@ const getData = async () => {
             const res = await req.json();
             return res;
         } catch(error){
-            console.log("ERROR!!", error);
+            console.log("Error:", error);
         }
 }
 
@@ -36,23 +36,20 @@ const postData = async (url='', data={}) => {
     });
 
     try {
-        const newData = await response.json();
-        console.log(newData);
-        return newData
+        const newData = await res.json();
+        return newData;
     } catch(error){
-        console.log("Error", error);
+        console.log("Error: ", error);
     }
 }
 
 const updateUI = async () => {
     const req = await fetch("http://localhost:3000/all");
-    console.log(req);
     try{
-      const allData = await request.json();
-      console.log(allData);
+      const allData = await req.json();
       date.innerHTML = 'Date: ' + allData.date;
       temp.innerHTML = 'Temperature: ' + allData.temperature;
-      content.innerHTML = 'Feeling: ' + allData.user_response;
+      content.innerHTML = 'Feeling: ' + allData.feeling;
     }catch(error){
       console.log("error", error);
     }
@@ -60,8 +57,8 @@ const updateUI = async () => {
 
 const clickFun = () => {
     getData()
-    .then((data) => postData("http://localhost:3000/add",{temp:data.main.temp,date:newDate,feeling:feelings.value}))
-    .then(() => updateUI());
+    .then((data) => postData("http://localhost:3000/add",{date:newDate,temp:data.main.temp,feeling:feelings.value}))
+    .then(() => updateUI())
 }
 
 generate.addEventListener('click', clickFun);
