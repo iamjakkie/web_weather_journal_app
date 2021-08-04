@@ -13,10 +13,10 @@ const content = document.getElementById('content');
 
 // Create a new date instance dynamically with JS
 let d = new Date();
-let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
+let newDate = (d.getMonth()+1)+'.'+ d.getDate()+'.'+ d.getFullYear();
 
 const getData = async () => {
-    const req = await fetch(`${url}?zip=${zip.value}&appid=${key}`)
+    const req = await fetch(`${url}?zip=${zip.value}&appid=${key}&units=metric`)
         try{
             const res = await req.json();
             return res;
@@ -55,10 +55,8 @@ const updateUI = async () => {
     }
   }
 
-const clickFun = () => {
+generate.addEventListener('click', () => {
     getData()
     .then((data) => postData("http://localhost:3000/add",{date:newDate,temp:data.main.temp,feeling:feelings.value}))
     .then(() => updateUI())
-}
-
-generate.addEventListener('click', clickFun);
+});

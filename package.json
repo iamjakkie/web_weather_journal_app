@@ -1,0 +1,25 @@
+{
+  "name": "web_weather_journal",
+  "version": "1.0.0",
+  "description": "Web weather journal app",
+  "main": "server.js",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iamjakkie/web_weather_journal_app.git"
+  },
+  "author": "jakkie",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iamjakkie/web_weather_journal_app/issues"
+  },
+  "homepage": "https://github.com/iamjakkie/web_weather_journal_app#readme"
+}
